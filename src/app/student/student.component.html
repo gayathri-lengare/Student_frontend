@@ -1,0 +1,100 @@
+<div class="container mt-5">
+  <div class="card p-4 shadow">
+    <h2 class="text-center mb-4">Student Management System</h2>
+
+    <!-- FORM -->
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Name"
+          [(ngModel)]="student.name"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Enter Email"
+          [(ngModel)]="student.email"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter Age"
+          [(ngModel)]="student.age"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Course"
+          [(ngModel)]="student.course"
+        />
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-primary px-4" (click)="saveStudent()">
+        {{ isEditMode ? "Update Student" : "Add Student" }}
+      </button>
+
+      <button class="btn btn-secondary ms-2" (click)="resetForm()">
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+
+  <div class="card shadow mt-5 p-3">
+    <h3 class="mb-3">Student List</h3>
+
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Course</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.age }}</td>
+          <td>{{ student.course }}</td>
+
+          <td>
+            <button
+              class="btn btn-warning btn-sm me-2"
+              (click)="editStudent(student)"
+            >
+              Edit
+            </button>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteStudent(student.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
